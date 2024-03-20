@@ -39,6 +39,9 @@ struct DragGestureProxy {
 ```
 
 ## Usage
+The `.dragGestureObserver()` modifier needs to be attached to a container view. This will listen for the drag gesture within the container size.
+After that you can attach the `.onDragGesture(action:)` on any subview of the container to start receiving those events.
+
 
 ```swift
 import SwiftUI
