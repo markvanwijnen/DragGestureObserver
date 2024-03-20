@@ -10,36 +10,18 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var isPressed: Bool = false
-    @State private var displayValue: String = "0"
-
+    
     var body: some View {
         VStack {
-            // Simple Demo
-            VStack {
-                Text("Click me")
-                    .fontWeight(.bold)
-                    .foregroundStyle(isPressed ? .blue : .white)
-                    .padding()
-                    .onDragGesture([.downInside, .up]) { proxy in
-                        self.isPressed = (proxy.phase == .downInside)
-                    }
-            }
-            .dragGestureObserver()
-            
-            Divider()
-            
-            // Calculator Button Behavior
-            VStack {
-                CalculatorDisplay(displayValue: $displayValue)
-                HStack {
-                    CalculatorButton(7, displayValue: $displayValue)
-                    CalculatorButton(8, displayValue: $displayValue)
-                    CalculatorButton(9, displayValue: $displayValue)
+            Text("Click me")
+                .fontWeight(.bold)
+                .foregroundStyle(isPressed ? .blue : .white)
+                .padding()
+                .onDragGesture([.downInside, .up]) { proxy in
+                    self.isPressed = (proxy.phase == .downInside)
                 }
-            }
-            .dragGestureObserver()
         }
-        
+        .dragGestureObserver()
     }
     
 }
