@@ -2,21 +2,6 @@
 
 An extension to SwiftUI that will add control events to your views.
 
-Phase:
-• down
-• downInside
-• downOutside
-• move
-• moveInside
-• moveOutside
-• up
-• upInside
-• upOutside
-• enter
-• exit
-
-Besides those phases it will also give you access to the drag value and geometry of the view.
-
 ## Installation
 
 Download the DragGestureObserver.swift file and add it to your project.
@@ -27,6 +12,30 @@ Download the DragGestureObserver.swift file and add it to your project.
 func dragGestureObserver() -> some View
 func onDragGesture(_ phase: DragGesture.Phase, action: @escaping (DragGestureProxy) -> Void) -> some View
 func onDragGesture(_ phases: [DragGesture.Phase] = DragGesture.Phase.allCases, action: @escaping (DragGestureProxy) -> Void) -> some View
+```
+
+```swift
+extension DragGesture {
+    enum Phase: CaseIterable {
+        case down
+        case downInside
+        case downOutside
+        case up
+        case upInside
+        case upOutside
+        case move
+        case moveInside
+        case moveOutside
+        case enter
+        case exit
+    }
+}
+
+struct DragGestureProxy {
+    let phase: DragGesture.Phase
+    let value: DragGesture.Value
+    let geometry: GeometryProxy
+}
 ```
 
 ## Usage
