@@ -60,7 +60,7 @@ fileprivate struct _DragGestureObserver: ViewModifier {
             .onEnded {publisher.send(_DragGestureObserver.Event.ended($0, coordinateSpace))}
     }
     
-    init(in coordinateSpace: CoordinateSpace = .global) {
+    init(coordinateSpace: CoordinateSpace = .global) {
         self.coordinateSpace = coordinateSpace
     }
     
@@ -72,8 +72,8 @@ fileprivate struct _DragGestureObserver: ViewModifier {
 }
 
 extension View {
-    func dragGestureObserver() -> some View {
-        modifier(_DragGestureObserver())
+    func dragGestureObserver(coordinateSpace: CoordinateSpace = .global) -> some View {
+        modifier(_DragGestureObserver(coordinateSpace: coordinateSpace))
     }
 }
 
